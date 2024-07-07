@@ -35,7 +35,8 @@
                         </div>
                         <div class="col-auto">
                             <div class="mx-2">
-                                <?= $song['title']; ?><br><?= $song['singer']; ?>
+                                <a href="<?= base_url('/track/' . $song['id']); ?>" class="text-decoration-none text-dark"><?= $song['title']; ?></a><br>
+                                <?= $song['singer']; ?>
                             </div>
                         </div>
                     </div>

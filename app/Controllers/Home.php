@@ -25,4 +25,14 @@ class Home extends BaseController
         ];
         return view('home', $data);
     }
+
+    public function detailSong($id)
+    {
+        $detailSong = $this->songmodel->find($id);
+        $data = [
+            'title' => 'MP326 | ' . $detailSong['title'],
+            'song' => $this->songmodel->find($id)
+        ];
+        return view('detailSong', $data);
+    }
 }
