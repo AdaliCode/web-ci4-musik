@@ -9,14 +9,16 @@ class SongSeeder extends Seeder
 {
     public function run()
     {
-        $data = [
-            'title' => 'Test Musik',
-            'singer' => 'Yoona',
-            'album' => 'Test Album',
-            'created_at' => Time::now(),
-            'updated_at' => Time::now()
-        ];
-
-        $this->db->table('songs')->insert($data);
+        $faker = \Faker\Factory::create('id_ID');
+        for ($i = 0; $i < 100; $i++) {
+            $data = [
+                'title' =>  $faker->title(),
+                'singer' => $faker->name(),
+                'album' => $faker->company(),
+                'created_at' => Time::now(),
+                'updated_at' => Time::now()
+            ];
+            $this->db->table('songs')->insert($data);
+        }
     }
 }

@@ -8,13 +8,12 @@
         <div class="col text-capitalize mx-3">
             playlist <br>
             <span class="text-capitalize lato-700 h1">Liked Songs</span><br>
-            <span class="lato-700">Muhammad Ariiq Fiezayyan</span> - 110 songs
+            <span class="lato-700">Muhammad Ariiq Fiezayyan</span> - <?= count($songs); ?> songs
         </div>
     </div>
 </div>
 <?= $this->endSection(); ?>
 <?= $this->section('container'); ?>
-<!-- <div class="mt-3"> -->
 <table class="table table-borderless align-middle" id="songs">
     <thead>
         <tr class="text-capitalize border-bottom">
@@ -26,9 +25,9 @@
         </tr>
     </thead>
     <tbody>
-        <?php for ($i = 0; $i < 20; $i++) : ?>
+        <?php foreach ($songs as $key => $song) : ?>
             <tr>
-                <th scope="row"><?= $i + 1; ?></th>
+                <th scope="row"><?= $key + 1; ?></th>
                 <td>
                     <div class="row g-0">
                         <div class="col-auto">
@@ -36,17 +35,16 @@
                         </div>
                         <div class="col-auto">
                             <div class="mx-2">
-                                Gift<br>HA SUNG WOON
+                                <?= $song['title']; ?><br><?= $song['singer']; ?>
                             </div>
                         </div>
                     </div>
                 </td>
-                <td>Lovely Runner, Pt. 9 (Original Soundtrack)</td>
+                <td><?= $song['album']; ?></td>
                 <td>1 week ago</td>
                 <td>4:49</td>
             </tr>
-        <?php endfor; ?>
+        <?php endforeach; ?>
     </tbody>
 </table>
-<!-- </div> -->
 <?= $this->endSection(); ?>
