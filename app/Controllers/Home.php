@@ -11,11 +11,17 @@ class Home extends BaseController
     {
         $this->songmodel = new SongModel();
     }
-    public function index(): string
+    public function index()
     {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $songs = $this->songmodel->search($keyword);
+        } else {
+            $songs = $this->songmodel;
+        }
         $data = [
             'title' => 'MP326',
-            'songs' => $this->songmodel->findAll()
+            'songs' => $songs->findAll()
         ];
         return view('home', $data);
     }
