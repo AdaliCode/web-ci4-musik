@@ -36,7 +36,7 @@
                         <div class="col-auto">
                             <div class="mx-2">
                                 <a href="<?= base_url('/track/' . $song['id']); ?>" class="text-decoration-none text-dark"><?= $song['title']; ?></a><br>
-                                HA SUNG WOON
+                                <?= $song['singer_name']; ?>
                             </div>
                         </div>
                     </div>

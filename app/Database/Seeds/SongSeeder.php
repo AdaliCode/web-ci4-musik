@@ -66,18 +66,18 @@ class SongSeeder extends Seeder
             ],
         ];
         $this->db->table('songs')->insertBatch($data);
-        $faker = \Faker\Factory::create('id_ID');
-        for ($i = 0; $i < 100 - count($data); $i++) {
-            $dataFaker = [
-                'title' =>  $faker->title(),
-                'album' => $faker->company(),
-                'release' => $faker->date(),
-                'minutes_duration' => $faker->numberBetween(2, 6),
-                'seconds_duration' => $faker->numberBetween(0, 59),
-                'created_at' => Time::now(),
-                'updated_at' => Time::now()
-            ];
-            $this->db->table('songs')->insert($dataFaker);
-        }
+        // $faker = \Faker\Factory::create('id_ID');
+        // for ($i = 0; $i < 100 - count($data); $i++) {
+        //     $dataFaker = [
+        //         'title' =>  $faker->title(),
+        //         'album' => $faker->company(),
+        //         'release' => $faker->date(),
+        //         'minutes_duration' => $faker->numberBetween(2, 6),
+        //         'seconds_duration' => $faker->numberBetween(0, 59),
+        //         'created_at' => Time::now(),
+        //         'updated_at' => Time::now()
+        //     ];
+        //     $this->db->table('songs')->insert($dataFaker);
+        // }
     }
 }
