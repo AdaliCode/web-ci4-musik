@@ -12,7 +12,6 @@ class SongSeeder extends Seeder
         $data = [
             [
                 'title' =>  'Gift',
-                'singer' => 'HA SUNG WOON',
                 'album' => 'Lovely Runner, Pt. 9 (Original Soundtrack)',
                 'release' => '2024-05-21',
                 'minutes_duration' => 4,
@@ -22,7 +21,6 @@ class SongSeeder extends Seeder
             ],
             [
                 'title' =>  'Dia Masa Lalumu, Aku Masa Depanmu',
-                'singer' => 'Vionita',
                 'album' => 'Dia Masa Lalumu, Aku Masa Depanmu',
                 'release' => '2021-03-05',
                 'minutes_duration' => 4,
@@ -32,7 +30,6 @@ class SongSeeder extends Seeder
             ],
             [
                 'title' =>  'May I Love You?',
-                'singer' => 'UMJI',
                 'album' => 'Lovely Runner, Pt. 4 (Original Soundtrack)',
                 'release' => '2024-04-23',
                 'minutes_duration' => 3,
@@ -42,7 +39,6 @@ class SongSeeder extends Seeder
             ],
             [
                 'title' =>  'Sudden Shower',
-                'singer' => 'ECLIPSE',
                 'album' => 'Lovely Runner, Pt. 1 (Original Soundtrack)',
                 'release' => '2024-04-8',
                 'minutes_duration' => 3,
@@ -52,7 +48,6 @@ class SongSeeder extends Seeder
             ],
             [
                 'title' =>  'Shiny Star (2020)',
-                'singer' => 'KyoungSeo',
                 'album' => 'Shiny Star (2020)',
                 'release' => '2020-11-14',
                 'minutes_duration' => 3,
@@ -62,7 +57,6 @@ class SongSeeder extends Seeder
             ],
             [
                 'title' =>  'Niscaya',
-                'singer' => 'Bilal Indrajaya',
                 'album' => 'Niscaya',
                 'release' => '2021-08-25',
                 'minutes_duration' => 4,
@@ -76,7 +70,6 @@ class SongSeeder extends Seeder
         for ($i = 0; $i < 100 - count($data); $i++) {
             $dataFaker = [
                 'title' =>  $faker->title(),
-                'singer' => $faker->name(),
                 'album' => $faker->company(),
                 'release' => $faker->date(),
                 'minutes_duration' => $faker->numberBetween(2, 6),

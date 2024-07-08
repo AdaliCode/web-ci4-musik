@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Song extends Migration
+class Singer extends Migration
 {
     public function up()
     {
@@ -15,24 +15,13 @@ class Song extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'title' => [
+            'name' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'album' => [
-                'type' => 'VARCHAR',
-                'constraint' => '255',
-            ],
-            'release' => [
-                'type' => 'DATE',
-            ],
-            'minutes_duration' => [
-                'type' => 'INT',
-                'constraint' => 1,
-            ],
-            'seconds_duration' => [
-                'type' => 'INT',
-                'constraint' => 2,
+            'description' => [
+                'type'  => 'TEXT',
+                'null' => true,
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -44,11 +33,11 @@ class Song extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('songs');
+        $this->forge->createTable('singers');
     }
 
     public function down()
     {
-        $this->forge->dropTable('songs');
+        $this->forge->dropTable('singers');
     }
 }
