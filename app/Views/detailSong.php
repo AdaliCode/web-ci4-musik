@@ -8,7 +8,7 @@
         <div class="col text-capitalize mx-3">
             Lagu <br>
             <span class="text-capitalize lato-700 h1"><?= $song['title']; ?></span><br>
-            <?= $song['singer']; ?> - <?= $song['title']; ?> - 2024 - 4:49
+            <?= $song['singer']; ?> - <?= $song['title']; ?> - <?= date('Y', strtotime($song['release'])); ?> - <?= $song['minutes_duration'] ?>:<?= sprintf('%02d', $song['seconds_duration']) ?>
         </div>
     </div>
 </div>
@@ -24,7 +24,7 @@
                     <th scope="row"><?= $i + 1; ?></th>
                     <td><?= $song['title']; ?></td>
                     <td>1.000.000</td>
-                    <td>4:49</td>
+                    <td><?= $song['minutes_duration'] ?>:<?= sprintf('%02d', $song['seconds_duration']) ?></td>
                 </tr>
             <?php endfor; ?>
         </tbody>
@@ -39,7 +39,7 @@
                 <img src="../album.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title"><?= $song['singer']; ?></h5>
-                    <p class="card-text">2024 - <?= ($i % 2 == 0) ? 'Single' : 'Album'; ?></p>
+                    <p class="card-text"><?= date('Y', strtotime($song['release'])); ?> - <?= ($i % 2 == 0) ? 'Single' : 'Album'; ?></p>
                 </div>
             </div>
         </div>

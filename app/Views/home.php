@@ -21,7 +21,7 @@
             <th scope="col" class="text-success">title</th>
             <th scope="col" class="text-success">album</th>
             <th scope="col" class="text-success">data added</th>
-            <th scope="col" class="text-success">duration</th>
+            <th scope="col" class="text-success"><i class="bi bi-clock"></i></th>
         </tr>
     </thead>
     <tbody>
@@ -43,7 +43,7 @@
                 </td>
                 <td><?= $song['album']; ?></td>
                 <td>1 week ago</td>
-                <td>4:49</td>
+                <td><?= $song['minutes_duration'] ?>:<?= sprintf('%02d', $song['seconds_duration']) ?></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

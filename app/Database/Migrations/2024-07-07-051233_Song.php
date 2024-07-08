@@ -27,6 +27,17 @@ class Song extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
+            'release' => [
+                'type' => 'DATE',
+            ],
+            'minutes_duration' => [
+                'type' => 'INT',
+                'constraint' => 1,
+            ],
+            'seconds_duration' => [
+                'type' => 'INT',
+                'constraint' => 2,
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
