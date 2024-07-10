@@ -12,7 +12,7 @@ class SongModel extends Model
 
     public function singers()
     {
-        return $this->table('songs')->select(['songs.*', 'GROUP_CONCAT(singers.name, singers.id) as all_singers', 'GROUP_CONCAT(singers.id) as all_singers_id'])->join('singer_songs', 'songs.id = singer_songs.song_id', 'inner')->join('singers', 'singers.id = singer_songs.singer_id', 'inner')->groupBy('songs.title');
+        return $this->table('songs')->select(['songs.*', 'GROUP_CONCAT(singers.name, singers.id) as all_singers'])->join('singer_songs', 'songs.id = singer_songs.song_id', 'inner')->join('singers', 'singers.id = singer_songs.singer_id', 'inner')->groupBy('songs.title');
     }
 
     public function search($keyword)

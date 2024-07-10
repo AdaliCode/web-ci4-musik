@@ -7,4 +7,5 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/track/(:segment)', 'Home::detailSong/$1');
+$routes->get('/artist/(:segment)', 'Home::detailSinger/$1');
 $routes->setAutoRoute(true);
