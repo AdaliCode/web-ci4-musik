@@ -24,7 +24,7 @@ class SingerSongSeeder extends Seeder
             ],
             [
                 'singer_id' =>  3,
-                'song_id' =>  4,
+                'song_id' =>  5,
                 'created_at' => Time::now(),
                 'updated_at' => Time::now()
             ],

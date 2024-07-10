@@ -10,10 +10,9 @@ class SongModel extends Model
     protected $allowedFields    = ['title', 'singer', 'album'];
     protected $useTimestamps = true;
 
-    public function joinSingers()
+    public function singers()
     {
-        return $this->table('songs')->select(['songs.id', 'title', 'album', 'release', 'minutes_duration', 'seconds_duration', 'name AS singer_name', 'description'])->join('singer_songs', 'songs.id = singer_songs.song_id')->join('singers', 'singers.id = singer_songs.singer_id');
-        // return $this->table('songs')->join('singer_songs', 'songs.id = singer_songs.song_id')->join('singers', 'singers.id = singer_songs.singer_id');
+        return $this->table('songs')->select(['songs.*', 'GROUP_CONCAT(singers.name, singers.id) as all_singers', 'GROUP_CONCAT(singers.id) as all_singers_id'])->join('singer_songs', 'songs.id = singer_songs.song_id', 'inner')->join('singers', 'singers.id = singer_songs.singer_id', 'inner')->groupBy('songs.title');
     }
 
     public function search($keyword)

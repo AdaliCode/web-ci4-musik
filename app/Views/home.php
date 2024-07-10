@@ -36,7 +36,10 @@
                         <div class="col-auto">
                             <div class="mx-2">
                                 <a href="<?= base_url('/track/' . $song['id']); ?>" class="text-decoration-none text-dark"><?= $song['title']; ?></a><br>
-                                <?= $song['singer_name']; ?>
+                                <?php foreach (explode(',', $song['all_singers']) as $key => $singerName) : ?>
+                                    <?php $addSong = ($key != array_key_last(explode(',', $song['all_singers']))) ? "," : ""; ?>
+                                    <a href="<?= base_url('/artist/' . substr($singerName, -1)); ?>" class="text-decoration-none text-dark"><?= rtrim($singerName, substr($singerName, -1)) .  $addSong ?></a>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>

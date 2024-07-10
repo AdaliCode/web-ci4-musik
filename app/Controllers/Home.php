@@ -13,35 +13,29 @@ class Home extends BaseController
     }
     public function index()
     {
-        // $db = \Config\Database::connect();
-        // $singerAndSong = $db->query("SELECT songs.id, songs.title, songs.album,songs.minutes_duration,songs.seconds_duration FROM singer_songs INNER JOIN songs ON singer_songs.song_id=songs.id");
-        // foreach ($singerAndSong->getResultArray() as $row) {
-        //     var_dump($row);
-        // }
-        // return var_dump($this->songmodel->like('title', 'a')->findAll());
-        // return var_dump($this->songmodel->join('singer_songs', 'songs.id = singer_songs.song_id')->join('singers', 'singers.id = singer_songs.singer_id')->findAll());
-        // return var_dump($this->songmodel->select(['title', 'album', 'name AS singerName', 'description'])->join('singer_songs', 'songs.id = singer_songs.song_id')->join('singers', 'singers.id = singer_songs.singer_id')->findAll());
-        // return var_dump($this->songmodel->joinSingers()->findAll());
-        // return var_dump($this->songmodel->select(['title', 'album'])->findAll());
+        // return var_dump($this->songmodel->select('count(DISTINCT(title))')->findAll());
+        // return var_dump($this->songmodel->select(['songs.*', 'GROUP_CONCAT(singers.name) as all_singers'])->join('singer_songs', 'songs.id = singer_songs.song_id', 'inner')->join('singers', 'singers.id = singer_songs.singer_id', 'inner')->groupBy('songs.title')->findAll());
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
-            $songs = $this->songmodel->joinSingers()->search($keyword);
+            $songs = $this->songmodel->singers()->search($keyword);
         } else {
-            $songs = $this->songmodel->joinSingers();
+            $songs = $this->songmodel->singers();
         }
         $data = [
             'title' => 'MP326',
             'songs' => $songs->findAll()
         ];
-        // return var_dump($data['songs'][0]);
-        // return var_dump($data['songs'][0]['name']);
+        // $array3 = array_merge(explode(',', $data['songs'][1]['all_singers_name']), explode(',', $data['songs'][1]['all_singers_id']));
+        // return var_dump($array3);
+        // return var_dump($data['songs']);
+        // return var_dump(explode(',', $data['songs'][1]['all_singers_name'])) . ', ' . var_dump(explode(',', $data['songs'][1]['all_singers_id']));
         return view('home', $data);
     }
 
     public function detailSong($id)
     {
-        $detailSong = $this->songmodel->joinSingers()->find($id);
-        // $detailSong = $this->songmodel->joinSingers()->where('songs.id', $id)->findAll();
+        $detailSong = $this->songmodel->singers()->find($id);
+        // $detailSong = $this->songmodel->singers()->where('songs.id', $id)->findAll();
         // return var_dump($detailSong);
         $data = [
             'title' => 'MP326 | ' . $detailSong['title'],

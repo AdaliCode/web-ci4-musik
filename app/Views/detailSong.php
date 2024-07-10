@@ -8,7 +8,7 @@
         <div class="col text-capitalize mx-3">
             Lagu <br>
             <span class="text-capitalize lato-700 h1"><?= $song['title']; ?></span><br>
-            <?= $song['singer_name']; ?> - <?= $song['title']; ?> - <?= date('Y', strtotime($song['release'])); ?> - <?= $song['minutes_duration'] ?>:<?= sprintf('%02d', $song['seconds_duration']) ?>
+            <?= explode(',', $song['all_singers'])[0]; ?> - <?= $song['title']; ?> - <?= date('Y', strtotime($song['release'])); ?> - <?= $song['minutes_duration'] ?>:<?= sprintf('%02d', $song['seconds_duration']) ?>
         </div>
     </div>
 </div>
@@ -16,7 +16,7 @@
 <?= $this->section('container'); ?>
 <div id="song" class="mb-5">
     <h5>Track Populer oleh</h5>
-    <h3 class="lato-700"><?= $song['singer_name']; ?></h3>
+    <h3 class="lato-700"><?= explode(',', $song['all_singers'])[0]; ?></h3>
     <table class="table table-borderless align-middle" id="songs">
         <tbody>
             <?php for ($i = 0; $i < 5; $i++) : ?>
@@ -31,14 +31,14 @@
     </table>
     <p>Lihat Semua</p>
 </div>
-<h3 class="lato-700">Rilis Populer oleh <?= $song['singer_name']; ?></h3>
+<h3 class="lato-700">Rilis Populer oleh <?= explode(',', $song['all_singers'])[0]; ?></h3>
 <div class="row">
     <?php for ($i = 0; $i < 4; $i++) : ?>
         <div class="col-md-3 mb-3">
             <div class="card">
                 <img src="../album.png" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title"><?= $song['singer_name']; ?></h5>
+                    <h5 class="card-title"><?= explode(',', $song['all_singers'])[0]; ?></h5>
                     <p class="card-text"><?= date('Y', strtotime($song['release'])); ?> - <?= ($i % 2 == 0) ? 'Single' : 'Album'; ?></p>
                 </div>
             </div>
